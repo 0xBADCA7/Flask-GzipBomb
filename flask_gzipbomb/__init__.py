@@ -55,35 +55,24 @@ __version__ = '0.1.0'
 class GzipBombResponse(Response):
     """Response containing GzipBomb."""
 
-    class _GzipData(object):
-        """
-        Helper class for GzipBombResponse.
-
-        Contains raw gzipped data and number of compression rounds.
-        """
-
-        def __init__(self, rounds, data):
-            self.rounds = rounds
-            self.data = data
-
-    #: Accaptable content sizes
+    #: Accaptable content sizes (rounds, data)
     _gzipData = {
         #: 1 kB
-        '1k':   _GzipData(rounds=1, data=rawdata['1k']),
+        '1k':   (1, rawdata['1k']),
         #: 10 kB
-        '10k':  _GzipData(rounds=1, data=rawdata['10k']),
+        '10k':  (1, rawdata['10k']),
         #: 100 kB
-        '100k': _GzipData(rounds=2, data=rawdata['100k']),
+        '100k': (2, rawdata['100k']),
         #: 1 MB
-        '1M':   _GzipData(rounds=2, data=rawdata['1M']),
+        '1M':   (2, rawdata['1M']),
         #: 10 MB
-        '10M':  _GzipData(rounds=2, data=rawdata['10M']),
+        '10M':  (2, rawdata['10M']),
         #: 100 MB
-        '100M': _GzipData(rounds=3, data=rawdata['100M']),
+        '100M': (3, rawdata['100M']),
         #: 1 GB
-        '1G':   _GzipData(rounds=3, data=rawdata['1G']),
+        '1G':   (3, rawdata['1G']),
         #: 10 GB
-        '10G':  _GzipData(rounds=4, data=rawdata['10G']),
+        '10G':  (4, rawdata['10G']),
     }
 
     def __init__(self, *args, **kwargs):
@@ -113,8 +102,7 @@ class GzipBombResponse(Response):
         """Set decompressed content size."""
         self._size = size
 
-        gzip = self._gzipData[self._size]
-        self.data = gzip.data
+        rounds, self.data = self._gzipData[self._size]
 
-        self.headers['Content-Encoding'] = ','.join(['gzip'] * gzip.rounds)
+        self.headers['Content-Encoding'] = ','.join(['gzip'] * rounds)
         self.headers['Content-Length'] = len(self.data)
