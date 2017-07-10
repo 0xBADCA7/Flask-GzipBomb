@@ -94,16 +94,3 @@ class GzipBombResponse(Response):
 
         self.headers['Content-Encoding'] = ','.join(['gzip'] * gzip.rounds)
         self.headers['Content-Length']   = len(self.data)
-
-
-from flask import Flask
-
-app = Flask(__name__)
-
-@app.route('/')
-def gzipped():
-    return GzipBombResponse(size='10M')
-
-
-if __name__ == "__main__":
-    app.run()
