@@ -16,7 +16,7 @@ setup(
     zip_safe=False,
     include_package_data=True,
     url='https://github.com/kuszaj/Flask-GzipBomb',
-    download_url='https://github.com/kuszaj/Flask-GzipBomb/archive/%s.tar.gz' % (version,),
+    download_url='https://github.com/kuszaj/Flask-GzipBomb/archive/v%s.tar.gz' % (version,),
     platforms='any',
     install_requires=[
         'Flask',
