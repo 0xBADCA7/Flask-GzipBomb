@@ -99,9 +99,21 @@ class GzipBombResponse(Response):
         Passing any other value will raise a KeyError.
         """
         size = kwargs.pop('size', '10M')
-        super(Response, self).__init__(*args, **kwargs)
 
-        gzip = self._gzipData[size]
+        super(Response, self).__init__(*args, **kwargs)
+        self.size = size
+
+    @property
+    def size(self):
+        """Get decompressed content size."""
+        return self._size
+
+    @size.setter
+    def size(self, size):
+        """Set decompressed content size."""
+        self._size = size
+
+        gzip = self._gzipData[self._size]
         self.data = gzip.data
 
         self.headers['Content-Encoding'] = ','.join(['gzip'] * gzip.rounds)
