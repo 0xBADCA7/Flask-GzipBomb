@@ -1,0 +1,14 @@
+env
+dist
+build
+eggs
+develop-eggs
+__pycache__
+*.egg
+*.egg-info
+*.py[cod]
+*.log
+*~
+*.bak
+*.sw[po]
+*.orig
