@@ -1,10 +1,11 @@
 """
 Gzip Bomb responses for Flask.
 
-This package provides an extension to Response class, **GzipBombResponse**,
-which can be used as a defensive measure for various vuln scanners, dictionary
-attacks etc. It creates a response containing a gzipped stream of zeroes with
-varying number of rounds (to achieve minimal size of response's content).
+This package provides an extension to flask.Response class,
+**GzipBombResponse**, which can be used as a defensive measure for various
+vuln scans, dictionary attacks etc. It creates a response containing a gzipped
+data block filled with null characters with varying number of rounds (to
+achieve minimal size of response's content).
 
 Example:
 
@@ -79,7 +80,7 @@ class GzipBombResponse(Response):
         """
         GzipBombResponse initializer.
 
-        Accepts the same arguments as Flask.Response class with the
+        Accepts the same arguments as flask.Response class with the
         addition of *size* parameter with predefined possible values:
 
             '1k', '10k', '100k', '1M', '10M', '100M', '1G', '10G'
