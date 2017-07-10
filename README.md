@@ -6,6 +6,18 @@ This package was inspired by [Christian Haschek](https://blog.haschek.at/) and h
 
 **Note: Any malicious usage of this library is strictly prohibited.**
 
+## Installation
+
+#### pip
+```shell
+pip install flask-gzipbomb
+```
+
+#### setup.py
+```shell
+python setup.py install
+```
+
 ## Usage
 `GzipBombResponse` class accepts the same arguments as `flask.Response` with the addition of `size` parameter. It defines, what should be the size of decompressed content retuned in the HTTP response. `GzipBombResponse` accepts only predefined `size` values:
 
