@@ -10,7 +10,16 @@ This package was inspired by [Christian Haschek](https://blog.haschek.at/) and h
 `GzipBombResponse` class accepts the same arguments as `flask.Response` with the addition of `size` parameter. It defines, what should be the size of decompressed content retuned in the HTTP response. `GzipBombResponse` accepts only predefined `size` values:
 
 ```python
-('1k', '10k', '100k', '1M', '10M', '100M', '1G', '10G')
+(
+    '1k',   # 29 bytes
+    '10k',  # 45 bytes
+    '100k', # 58 bytes
+    '1M',   # 64 bytes
+    '10M',  # 115 bytes
+    '100M', # 270 bytes
+    '1G',   # 317 bytes
+    '10G'   # 1254 bytes
+)
 ```
 with `k`, `M` and `G` denoting kilobyte, megabyte and gigabyte.
 
