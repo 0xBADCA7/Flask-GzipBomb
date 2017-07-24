@@ -2,7 +2,7 @@
 
 **Flask-GzipBomb** provides an extension of `flask.Response` class: `GzipBombResponse`. It allows to easily create a HTTP response containing gzipped data filled with null characters (`'\0'`) and compressed with varying number of rounds.
 
-This package was inspired by [Christian Haschek](https://blog.haschek.at/) and his article [How to defend your website with ZIP bombs](https://blog.haschek.at/2017/how-to-defend-your-website-with-zip-bombs.html). The intended purpose is to provide a simple tool that can be used to fight off vuln scanners, dictionary attacks and other unwelcommed traffic. As of now, how exactly recognize unwanted HTTP connections is left for the user to decide and implement.
+This package was inspired by [Christian Haschek](https://blog.haschek.at/) and his article [How to defend your website with ZIP bombs](https://blog.haschek.at/2017/how-to-defend-your-website-with-zip-bombs.html). The intended purpose is to provide a simple tool that can be used to fight off vuln scanners, dictionary attacks and other unwelcommed traffic. As of now, how exactly recognize unwanted HTTP connections is left for the user to implement.
 
 **Note: Any malicious usage of this library is strictly prohibited.**
 
